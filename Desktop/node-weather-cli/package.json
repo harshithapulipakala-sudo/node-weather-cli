@@ -1,0 +1,14 @@
+{
+  "name": "weather-cli",
+  "version": "1.0.0",
+  "description": "Simple CLI app to fetch weather information",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "phoebe",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.6.2"
+  }
+}
