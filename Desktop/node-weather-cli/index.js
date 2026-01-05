@@ -1,11 +1,12 @@
+// Weather CLI Application using Node.js
 const https = require('https');
 
 // Get city from command line
 const city = process.argv[2];
 
 if (!city) {
-  console.log('❌ Please provide a city name.');
-  console.log('👉 Example: node index.js "New York"');
+  console.log('Please provide a city name.');
+  console.log('Example: node index.js "New York"');
   process.exit(1);
 }
 
@@ -33,12 +34,12 @@ function fetchJSON(url) {
 
 async function getWeather(city) {
   try {
-    // 1️⃣ Get latitude & longitude
+    // 1️ Get latitude & longitude
     const geoURL = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`;
     const geoData = await fetchJSON(geoURL);
 
     if (!geoData.results || geoData.results.length === 0) {
-      console.log(`❌ City "${city}" not found.`);
+      console.log(` City "${city}" not found.`);
       return;
     }
 
@@ -51,14 +52,14 @@ async function getWeather(city) {
     const current = weatherData.current_weather;
 
     // 3️⃣ Display result
-    console.log(`🌤 Weather in ${name}, ${country}`);
-    console.log(`🌡 Temperature: ${current.temperature}°C`);
-    console.log(`💨 Wind Speed: ${current.windspeed} km/h`);
-    console.log(`🧭 Wind Direction: ${current.winddirection}°`);
-    console.log(`⏰ Time: ${current.time}`);
+    console.log(` Weather in ${name}, ${country}`);
+    console.log(` Temperature: ${current.temperature}°C`);
+    console.log(`Wind Speed: ${current.windspeed} km/h`);
+    console.log(` Wind Direction: ${current.winddirection}°`);
+    console.log(` Time: ${current.time}`);
 
   } catch (error) {
-    console.log('❌ Failed to fetch weather data.');
+    console.log(' Failed to fetch weather data.');
   }
 }
 
